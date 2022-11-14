@@ -44,16 +44,7 @@ def main(rows: list[str]):
 	path = solve_maze(rows, with_s=False)
 	raw_grid = raw_grid_from_rows(rows)
 
-	# print out the path with stars
-	print_maze_with_path(raw_grid, path, False)
-	print()
-
 	# print out the path with directions added
-	#
-	# note: we can re-use the same raw grid because we're
-	# overwriting all of the points that were written to in the
-	# previous `print_maze_with_path` function call since we
-	# use the same path
 	print_maze_with_path(raw_grid, path, True)
 	print(f'Length of the minimum path = {len(path)}')
 	print()
