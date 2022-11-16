@@ -46,7 +46,7 @@ def main(rows: list[str]):
 
 	# print out the path with directions added
 	print_maze_with_path(raw_grid, path, True)
-	print(f'Length of the minimum path = {len(path)}')
+	print(f'The length of the minimum path = {len(path)}')
 	print()
 
 	path = solve_maze(rows, with_s=True)
