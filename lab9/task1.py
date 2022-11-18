@@ -57,7 +57,7 @@ class Student:
 
 	@property
 	def average(self):
-		if self.__average:
+		if self.__average is not None:
 			return self.__average
 
 		self.__average = sum(mark.weighted for mark in self.marks)
@@ -66,7 +66,7 @@ class Student:
 
 	@property
 	def letter(self):
-		return LETTERS[floor((self.average * 100 - 40) / 5)]
+		return LETTERS[floor((max(self.average * 100 - 40, 0)) / 5)]
 
 def process_student() -> 'Student':
 	student = Student(input('What is the student\'s full name? '))
