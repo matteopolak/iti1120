@@ -2,7 +2,7 @@ from dataclasses import dataclass
 from math import floor
 
 LF = '\n'
-LETTERS = ['F', 'E', 'D', 'D+', 'C', 'C+', 'B', 'B+', 'A-', 'A', 'A+']
+LETTERS = ('F', 'E', 'D', 'D+', 'C', 'C+', 'B', 'B+', 'A-', 'A', 'A+')
 MARKS = (
 	('Lab mark', 10, 0.1),
 	('Assignment 1', 30, 0.05),
