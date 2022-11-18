@@ -17,43 +17,47 @@ MARKS = (
 
 @dataclass(slots=True)
 class Mark:
-	name: str
-	grade: float
-	weight: float
+	__name: str
+	__grade: float
+	__weight: float
 
 	@property
 	def weighted(self):
-		return self.weight * self.grade
+		return self.__weight * self.__grade
+
+	@property
+	def weight(self):
+		return self.__weight
 
 	def __str__(self):
-		return f'{self.name}: {self.weighted * 100:g}%'
+		return f'{self.__name}: {self.weighted * 100:g}%'
 
 	def build(self, weight_sum: float):
-		self.weight /= weight_sum
+		self.__weight /= weight_sum
 
 @dataclass(slots=True)
 class Student:
 	name: str
 	f_name: str
 	l_name: str
-	marks: list[Mark]
-	weight_sum: float
+	marks: list['Mark']
+	__weight_sum: float
 	__average: float | None
 
 	def __init__(self, name: str):
 		self.name = name
 		self.f_name, self.l_name = name.split(' ')
 		self.marks = []
-		self.weight_sum = 0
+		self.__weight_sum = 0
 		self.__average = None
 
 	def add_mark(self, mark: 'Mark'):
-		self.weight_sum += mark.weight
+		self.__weight_sum += mark.weight
 		self.marks.append(mark)
 
 	def build(self):
 		for mark in self.marks:
-			mark.build(self.weight_sum)
+			mark.build(self.__weight_sum)
 
 	@property
 	def average(self):
